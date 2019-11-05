@@ -1,5 +1,12 @@
-pub fn linear_search<T>(arr: &[T], target: &T) -> Option<usize>
-    where T: PartialEq
+fn main() {
+    println!("Hello, world!");
+    let a = [1,2,3,4,5,6,7,8,9];
+
+    println!("{}, {}", linear_search(&a, &7).unwrap(), linear_search_2(&a, &7).unwrap());
+}
+
+fn linear_search<T>(arr: &[T], target: &T) -> Option<usize>
+where T: PartialEq
 {
     for (index, item) in arr.iter().enumerate() {
         if item == target {
@@ -9,15 +16,10 @@ pub fn linear_search<T>(arr: &[T], target: &T) -> Option<usize>
     None
 }
 
-
-pub fn linear_search2<T>(arr: &[T], obj: &T) -> Option<usize>
-    where T: PartialEq
+fn linear_search_2<T>(arr: &[T], obj: &T) -> Option<usize>
+where T: PartialEq
 {
     arr.iter().position(|x| x == obj)
 }
-
-
-fn main() {
-    let a = [3,5,7,9,500,6,30,66,345];
-    b =  linear_search(a, 5) 
-}
+    
+    
