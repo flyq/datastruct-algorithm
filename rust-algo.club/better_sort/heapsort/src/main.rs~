@@ -1,0 +1,23 @@
+fn main() {
+    println!("Hello, world!");
+}
+
+
+
+
+pub fn heapsort(arr: &mut [i32]) {
+    // -- Heapify part --
+    // This procedure would build a valid max-heap.
+    // (or min-heap for sorting descendantly)
+    let end = arr.len();
+    for start in (0..end / 2).rev() {                   // 1
+        sift_down(arr, start, end - 1);
+    }
+
+    // -- Sorting part --
+    // Iteratively sift down unsorted part (the heap).
+    for end in (1..arr.len()).rev() {                   // 2
+        arr.swap(end, 0);                               // 3
+        sift_down(arr, 0, end - 1);                     // 4
+    }
+}
