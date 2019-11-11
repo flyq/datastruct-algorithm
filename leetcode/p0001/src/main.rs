@@ -7,15 +7,18 @@ fn main() {
     let b = Solution::two_sum(nums.to_vec(), target);
     let c = Solution2::two_sum(nums.to_vec(), target);
     let d = Solution3::two_sum(nums.to_vec(), target);
+    let f = Solution4::two_sum(nums.to_vec(), target);
     println!("{:?}", b);
     println!("{:?}", c);
-    println!("{:?}", d);    
-    
+    println!("{:?}", d);
+    println!("{:?}", f);
+   
 }
 
-struct Solution{}
-struct Solution2{}
-struct Solution3{}
+pub struct Solution{}
+pub struct Solution2{}
+pub struct Solution3{}
+pub struct Solution4{}
 
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
@@ -65,5 +68,22 @@ impl Solution3 {
             }
         }
         result 
+    }
+}
+
+
+use std::collections::HashMap;
+impl Solution4 {
+    pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
+        let mut map = HashMap::with_capacity(nums.len());
+        for (index, num) in nums.iter().enumerate() {
+            match map.get(&(target - num)) {
+                None => {
+                    map.insert(num, index);
+                }
+                Some(sub_index) => return vec![*sub_index as i32, index as i32],
+            }
+        }
+        vec![]
     }
 }
