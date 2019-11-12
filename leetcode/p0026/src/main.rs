@@ -41,7 +41,7 @@ impl Solution {
 }
 
 
-
+// 100%
 impl Solution1 {
     pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
         let len = nums.len();
