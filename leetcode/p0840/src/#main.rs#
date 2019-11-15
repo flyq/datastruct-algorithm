@@ -1,0 +1,18 @@
+fn main() {
+    println!("Hello, world!");
+}
+
+pub struct Solution {}
+
+impl Solution {
+    pub fn num_magic_squares_inside(grid: Vec<Vec<i32>>) -> i32 {
+        let rowcount = grid.len();
+        let colcount = grid[0].len();
+        if rowcount < 3 || colcount < 3 {
+            return 0;
+        }
+        for i in 0..rowcount {
+            for j in 0..colcount {
+                if a[i]
+    }
+}
