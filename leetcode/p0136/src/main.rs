@@ -1,0 +1,100 @@
+fn main() {
+    println!("Hello, world!");
+}
+pub struct Solution{}
+pub struct Solution1{}
+pub struct Solution2{}
+
+use std::collections::HashSet;
+impl Solution {
+    pub fn single_number(nums: Vec<i32>) -> i32 {
+        let mut temp = HashSet::new();
+        for i in 0..nums.len() {
+            if temp.contains(&nums[i]) {
+                temp.remove(&nums[i]);
+            } else {
+                temp.insert(&nums[i]);
+            }
+        }
+        for x in temp.iter() {
+            return **x;
+        }
+        0
+    }
+}
+
+/*
+执行结果：
+通过
+显示详情
+执行用时 :
+4 ms
+, 在所有 rust 提交中击败了
+17.02%
+的用户
+内存消耗 :
+2.5 MB
+, 在所有 rust 提交中击败了
+100.00%
+的用户
+ */
+
+use std::iter::FromIterator;
+
+impl Solution1 {
+    pub fn single_number(nums: Vec<i32>) -> i32 {
+        let sum1:i32 = nums.iter().sum();        
+        let temp: HashSet<i32> = HashSet::from_iter(nums);
+        let sum2:i32 = temp.iter().sum();
+        2*sum2 - sum1
+    }
+}      
+/*
+执行结果：
+通过
+显示详情
+执行用时 :
+0 ms
+, 在所有 rust 提交中击败了
+100.00%
+的用户
+内存消耗 :
+2.6 MB
+, 在所有 rust 提交中击败了
+100.00%
+的用户
+*/
+
+use std::collections::HashMap;
+impl Solution2 {
+    pub fn single_number(nums: Vec<i32>) -> i32 {
+        let mut map = HashMap::new();
+        for i in nums {
+            if map.get(&i) != None {
+                map.remove(&i);
+            } else {
+                map.insert(i, 1);
+            }
+        }
+        for key in map.keys() {
+            return *key;
+        }
+        0
+    }
+}
+
+/*
+执行结果：
+通过
+显示详情
+执行用时 :
+4 ms
+, 在所有 rust 提交中击败了
+17.02%
+的用户
+内存消耗 :
+2.6 MB
+, 在所有 rust 提交中击败了
+57.89%
+的用户
+*/
