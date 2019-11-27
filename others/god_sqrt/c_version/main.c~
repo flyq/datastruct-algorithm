@@ -1,0 +1,60 @@
+#include <stdio.h>
+int main()
+{
+  float InvSqrt(float x);
+  float InvSqrt1(float x);
+  float Q_rsqrt( float number );
+  float InvSqrt3 (float x);
+
+  float a = 9.0;
+  float res =  Q_rsqrt(a);
+  
+  printf("%f\n",res);
+  return 0;
+}
+
+float InvSqrt(float x)
+{
+  float xhalf = 0.5f*x;
+  int i = *(int*)&x;
+  i = 0x5f375a86 - (i>>1);
+  x = *(float*)&i;
+  x = x*(1.5f-xhalf*x*x);
+  return x;
+}
+/*
+float InvSqrt1(float x)
+{
+  float xhalf = 0.5f*x;
+  int i = *(int*)&amp;x;
+  i = 0x5f3759df - (i&gt;&gt;1);
+  x = x*(1.5f -xhalf*x*x);
+  return x;
+}
+*/
+float Q_rsqrt( float number )
+{
+  long i;
+  float x2, y;
+  const float threehalfs = 1.5F;
+
+  x2 = number * 0.5F;
+  y  = number;
+  i  = * ( long * ) &y;
+  i  = 0x5f3759df - ( i >> 1 );
+  y  = * ( float * ) &i;
+  y  = y * ( threehalfs - ( x2 * y * y ) );
+
+
+  return y;
+}
+
+
+float InvSqrt3 (float x){
+    float xhalf = 0.5f*x;
+    int i = *(int*)&x;
+    i = 0x5f3759df - (i>>1);
+    x = *(float*)&i;
+    x = x*(1.5f - xhalf*x*x);
+    return x;
+}
