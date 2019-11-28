@@ -6,7 +6,7 @@ int main()
   float Q_rsqrt( float number );
   float InvSqrt3 (float x);
 
-  float a = 10000.0;
+  float a = 100.0;
   float res =  InvSqrt(a);
   
   printf("%f\n",res);
@@ -16,12 +16,30 @@ int main()
 float InvSqrt(float x)
 {
   float xhalf = 0.5f*x;
+  printf("xhalf: %f\n", xhalf);
   int i = *(int*)&x;
+  printf("i1 int: %i\n", i);
+  printf("i1 float: %f\n",(float) i);
+  printf("i1 float: %f\n",*(float*) &i);
+  printf("i1 0x : %#010x\n", i);
+
+  printf("i>>1 0x : %#010x\n", i>>1);
+  printf("i>>1 int: %i\n", i>>1);
+
   i = 0x5f375a86 - (i>>1);
+
+  printf("i2 int: %i\n", i);
+  printf("i2 0x : %#010x\n", i);
+
+  printf("0x5f375a86: 0x: %#010x\n", 0x5f375a86);
+  printf("0x5f375a86: 10:%i\n", 0x5f375a86);  
   x = *(float*)&i;
-  x = x*(1.5f-xhalf*x*x);
-  x = x*(1.5f-xhalf*x*x);
-  //s  x = x*(1.5f-xhalf*x*x);
+  printf("x int: %f\n", x);
+
+
+
+  //x = x*(1.5f-xhalf*x*x);
+  //x = x*(1.5f-xhalf*x*x);
 
   return 1/x;
 }
