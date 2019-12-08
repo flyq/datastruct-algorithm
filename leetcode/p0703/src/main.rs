@@ -4,7 +4,7 @@ fn main() {
 pub struct Solution{}
 
 // copy from others
-/*
+
 use std::collections::BinaryHeap;
 struct KthLargest {
     priority_queue: BinaryHeap<i32>,
@@ -21,7 +21,7 @@ impl KthLargest {
         k
     }
     fn get_kth(&self) -> i32 {
-        *self.priority_queue.peek().unwrap()
+        -*self.priority_queue.peek().unwrap()
     }
 
     fn add(&mut self, val: i32) -> i32 {
@@ -39,8 +39,25 @@ impl KthLargest {
     }
 }
 
-
+/*
+执行结果：
+通过
+显示详情
+执行用时 :
+8 ms
+, 在所有 rust 提交中击败了
+91.67%
+的用户
+内存消耗 :
+5.6 MB
+, 在所有 rust 提交中击败了
+100.00%
+的用户
 */
+
+
+
+
 
 // bug
 /*
