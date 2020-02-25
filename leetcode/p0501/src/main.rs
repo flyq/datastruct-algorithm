@@ -11,7 +11,7 @@ pub struct TreeNode {
 }
 
 impl TreeNode {
-    #{inline]
+    #[inline]
     pub fn new(val: i32) -> Self {
         TreeNode {
             val,
@@ -25,4 +25,10 @@ use std::rc::Rc;
 use std::cell::RefCell;
 impl Solution {
     pub fn find_mode(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-        let mut m = 
+        let mut m = vec![];
+        m.push(1);
+        m
+    }
+}
+      
+            
