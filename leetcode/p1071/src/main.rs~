@@ -1,0 +1,30 @@
+use std::cmp::max;
+
+fn main() {
+    println!("Hello, world!");
+}
+
+pub struct Solution{}
+
+impl Solution {
+    pub fn gcd_of_strings(str1: String, str2: String) -> String {
+        if str1 + &str2 != str2 + &str1 {
+            return "".to_string();
+        }
+
+        let mut lmax = max(str1.len(), str2.len());
+        let mut lmin = str1.len() + str2.len() - lmax;
+        let gcd_num = Self::gcd(lmax, lmin);
+
+        return &str1[..gcd_num];        
+    }
+
+    pub fn gcd(max:mut usize, min:mut usize) -> usize {
+        while (min != 0) {
+            let t = min;
+            min = max % min;
+            max = t;
+        }
+        return max;
+    }
+}
