@@ -58,8 +58,8 @@ impl Solution1 {
                 min = map[key];
             }
         }
-        for value in map.values() {
-            min = Solution1::gcd(*value, min);
+        for &value in map.values() {
+            min = Solution1::gcd(value, min);
             if min == 1 {
                 return false;
             }
