@@ -1,6 +1,6 @@
 fn main() {
     println!("Hello, world!");
-    let mut a = vec![1,0,2,3,0,4,5,0];
+    let mut a = vec![1, 0, 2, 3, 0, 4, 5, 0];
     Solution::duplicate_zeros(&mut a);
     println!("{:?}", a);
 }
@@ -20,16 +20,31 @@ impl Solution {
         }
         for i in (0..len).rev() {
             if arr[i] != 0 {
-                arr[i+amount0] = arr[i];
+                arr[i + amount0] = arr[i];
             } else {
-                arr[i+amount0-1] = arr[i];
-                arr[i+amount0] = 0;
+                arr[i + amount0 - 1] = arr[i];
+                arr[i + amount0] = 0;
                 amount0 -= 1;
             }
         }
         arr.truncate(len);
     }
 }
+
+/*
+impl Solution {
+    pub fn duplicate_zeros(arr: &mut Vec<i32>) {
+        let mut temp = vec![];
+        for i in arr.iter() {
+            temp.push(*i);
+            if *i == 0 {
+                temp.push(*i);
+            }
+        }
+        *arr = temp[..arr.len()].to_vec();
+    }
+}
+*/
 
 /*
 执行结果：
